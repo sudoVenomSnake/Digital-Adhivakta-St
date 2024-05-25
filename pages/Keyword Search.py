@@ -1,12 +1,15 @@
-import os
 import re
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import pandas as pd
 from rank_bm25 import BM25Okapi
+import nltk
 import streamlit as st
 
 from utils.commons import sidebar, font, top_space
+
+nltk.download('punkt')
+nltk.download('stopwords')
 
 st.set_page_config(layout = "wide", initial_sidebar_state = "collapsed", page_icon = "✧")
 
