@@ -41,3 +41,8 @@ if query:
         st.text(i["fields"]["Case Number"][0])
         st.markdown(" ".join(["**" + i.strip() + "**" if n == 2 else i for n, i in enumerate(i["fields"]["Sentences"])]))
         st.text(i["fields"]["Judgement Date"][0])
+        if st.button("💬 Chat With Judgement", key = i["fields"]["Case Title"][0]):
+            if "messages" in st.session_state:
+                del st.session_state.messages
+            st.session_state.case_selected = i["fields"]["Case Title"][0]
+            st.switch_page("pages/Case Chat.py")

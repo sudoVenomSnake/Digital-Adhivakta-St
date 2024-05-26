@@ -50,23 +50,21 @@ with col2:
     if clicked:
         st.switch_page('pages/Sentence Similarity.py')
 
-# with col3:
-#     st.subheader('Consumer Trends')
-#     content = f"""
-#     <a href='#' id='Image 3'><img width='100%' src='data:image/png;base64,{get_base64_of_bin_file("assets/Keyword Search.png")}'></a>
-#     """
-#     clicked = click_detector(content)
-#     if clicked:
-#         st.switch_page('consumer trends')
+with col3:
+    content = f"""
+    <a href='#' id='Image 3'><img width='100%' src='data:image/png;base64,{get_base64_of_bin_file("assets/Chat With Cases.png")}'></a>
+    """
+    clicked = click_detector(content)
+    if clicked:
+        st.switch_page('pages/Case Chat.py')
 
-# with col4:
-#     st.subheader('The Triage')
-#     content = f"""
-#     <a href='#' id='Image 4'><img width='100%' src='data:image/png;base64,{get_base64_of_bin_file("assets/Keyword Search.png")}'></a>
-#     """
-#     clicked = click_detector(content)
-#     if clicked:
-#         st.switch_page('triage')
+with col4:
+    content = f"""
+    <a href='#' id='Image 4'><img width='100%' src='data:image/png;base64,{get_base64_of_bin_file("assets/About Us.png")}'></a>
+    """
+    clicked = click_detector(content)
+    if clicked:
+        st.switch_page('pages/About Us.py')
 
 # st.write("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in imperdiet nunc. Fusce pharetra libero ac tellus vehicula pretium. Duis maximus imperdiet convallis. Aliquam fermentum ullamcorper ex ac accumsan. Fusce id dictum mauris. Nunc at accumsan tellus, vel sollicitudin mi. Aenean nec orci at felis condimentum mattis sit amet ut ipsum.
 

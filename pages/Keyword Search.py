@@ -8,9 +8,6 @@ import streamlit as st
 
 from utils.commons import sidebar, font, top_space
 
-nltk.download('punkt')
-nltk.download('stopwords')
-
 st.set_page_config(layout = "wide", initial_sidebar_state = "collapsed", page_icon = "✧")
 
 top_space()
@@ -20,6 +17,8 @@ sidebar()
 @st.cache_data
 def get_text() -> dict:
     cases = {}
+    nltk.download('punkt')
+    nltk.download('stopwords')
     tmp_case_data = pd.read_csv("data/New_2023.csv")
     for title, text in zip(tmp_case_data["Case Title"], tmp_case_data["Judgement Text"]):
         cases[title] = text
@@ -71,6 +70,12 @@ def display_results(file_contents, ranked_files, ranked_indices, doc_scores, sea
         st.subheader(file)
         st.text(doc_scores[ranked_indices[i]])
         st.write("..." + snippet + "...")
+        if st.button("💬 Chat With Judgement", key = file):
+            st.title("WOAH")
+            if "messages" in st.session_state:
+                del st.session_state.messages
+            st.session_state.case_selected = file
+            st.switch_page("pages/Case Chat.py")
 
 if "queries" not in st.session_state:
     st.session_state.queries = []
@@ -79,6 +84,7 @@ if st.session_state.queries != []:
     if st.button("Clear Searches"):
         st.session_state.current_subset = file_contents
         st.session_state.queries = []
+        st.session_state.searched = False
         st.rerun()
 
 if st.session_state.queries != []:
@@ -94,8 +100,12 @@ if query != "" and query not in st.session_state.queries:
     st.session_state.run_search = True
     st.rerun()
 
+if "searched" not in st.session_state:
+    st.session_state.searched = False
+
+ranked_files, ranked_indices, doc_scores = search_and_rank(bm25, st.session_state.current_subset, tokenized_corpus, query)
 if st.session_state.run_search:
-    ranked_files, ranked_indices, doc_scores = search_and_rank(bm25, st.session_state.current_subset, tokenized_corpus, query)
-    display_results(st.session_state.current_subset, ranked_files, ranked_indices, doc_scores, query)
     st.session_state.current_subset = {file : st.session_state.current_subset[file] for file in ranked_files}
     st.session_state.run_search = False
+    st.session_state.searched = True
+display_results(st.session_state.current_subset, ranked_files, ranked_indices, doc_scores, query)

@@ -11,7 +11,7 @@ def top_space() -> None:
                 }}
 
         </style>""".format(
-        padding_top = 1, padding_bottom = 1
+        padding_top = 2, padding_bottom = 1
         ),
         unsafe_allow_html=True,
     )
@@ -35,7 +35,6 @@ def sidebar() -> None:
             Page("pages/About Us.py", "About Us", ":books:"),
             Page("pages/Keyword Search.py", "Keyword Search", "🔠", in_section = True),
             Page("pages/Sentence Similarity.py", "Sentence Similarity", "🔢", in_section = True),
-            Page("pages/case_chat.py", "case_chat")
+            Page("pages/Case Chat.py", "Case Chat", "💬")
         ]
     )
-    hide_pages(["case_chat"])
