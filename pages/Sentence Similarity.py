@@ -36,12 +36,12 @@ def sentence_search_mutation(input_str : str) -> dict:
 query = st.text_input("Please put in your input query -")
 
 if query:
-    for n, i in enumerate(sentence_search_mutation(query)):
+    for n_, i in enumerate(sentence_search_mutation(query)):
         st.subheader(f"""[{i["fields"]["Case Title"][0]}]({i["fields"]["Judgement PDF URL"][0]})""")
         st.text(i["fields"]["Case Number"][0])
         st.markdown(" ".join(["**" + i.strip() + "**" if n == 2 else i for n, i in enumerate(i["fields"]["Sentences"])]))
         st.text(i["fields"]["Judgement Date"][0])
-        if st.button("💬 Chat With Judgement", key = i["fields"]["Case Title"][0] + f"_{n}"):
+        if st.button("💬 Chat With Judgement", key = i["fields"]["Case Title"][0] + f"_{n_}"):
             if "messages" in st.session_state:
                 del st.session_state.messages
             st.session_state.case_selected = i["fields"]["Case Title"][0]
