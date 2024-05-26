@@ -45,4 +45,4 @@ if query:
             if "messages" in st.session_state:
                 del st.session_state.messages
             st.session_state.case_selected = i["fields"]["Case Title"][0]
-            st.switch_page("Case Chat.py")
+            st.switch_page("pages/Case Chat.py")

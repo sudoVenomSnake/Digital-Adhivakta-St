@@ -74,7 +74,7 @@ def display_results(file_contents, ranked_files, ranked_indices, doc_scores, sea
             if "messages" in st.session_state:
                 del st.session_state.messages
             st.session_state.case_selected = file
-            st.switch_page("Case Chat.py")
+            st.switch_page("pages/Case Chat.py")
 
 if "queries" not in st.session_state:
     st.session_state.queries = []
