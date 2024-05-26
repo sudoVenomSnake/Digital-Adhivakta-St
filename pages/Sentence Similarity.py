@@ -42,7 +42,7 @@ if query:
         try:
             st.markdown(" ".join(["**" + i.strip() + "**" if n == 2 else i for n, i in enumerate(i["fields"]["Sentences"])]))
         except:
-            continue
+            pass
         st.text(i["fields"]["Judgement Date"][0])
         if st.button("💬 Chat With Judgement", key = i["fields"]["Case Title"][0] + f"_{n_}"):
             if "messages" in st.session_state:
