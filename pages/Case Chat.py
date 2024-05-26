@@ -30,7 +30,7 @@ if "case_selected" not in st.session_state:
 if "case_selected" in st.session_state:
     if "messages" not in st.session_state:
         st.session_state.messages = []
-        st.session_state.messages.append({"role": "user", "content": f"I will ask you questions on this judgement - \n{data[data["Case Title"] == st.session_state.case_selected].values[0]}"})
+        st.session_state.messages.append({"role": "user", "content": f"""I will ask you questions on this judgement - \n{data[data["Case Title"] == st.session_state.case_selected].values[0]}"""})
     for message in st.session_state.messages[1:]:
         with st.chat_message(message["role"]):
             if message["role"] == "user":
