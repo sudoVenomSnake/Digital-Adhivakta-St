@@ -1,5 +1,5 @@
 import streamlit as st
-from st_pages import Page, show_pages, hide_pages
+# from st_pages import Page, show_pages, hide_pages
 
 def top_space() -> None:
     st.markdown(
@@ -29,12 +29,13 @@ def font() -> None:
     st.write(streamlit_style, unsafe_allow_html = True)
 
 def sidebar() -> None:
-    show_pages(
-        [
-            Page("Home.py", "Home", "🏠"),
-            Page("pages/About Us.py", "About Us", ":books:"),
-            Page("pages/Keyword Search.py", "Keyword Search", "🔠", in_section = True),
-            Page("pages/Sentence Similarity.py", "Sentence Similarity", "🔢", in_section = True),
-            Page("pages/Case Chat.py", "Case Chat", "💬")
-        ]
-    )
+    #show_pages(
+    #   [
+     #       Page("Home.py", "Home", "🏠"),
+      #      Page("pages/About Us.py", "About Us", ":books:"),
+       #     Page("pages/Keyword Search.py", "Keyword Search", "🔠", in_section = True),
+       #     Page("pages/Sentence Similarity.py", "Sentence Similarity", "🔢", in_section = True),
+       #     Page("pages/Case Chat.py", "Case Chat", "💬")
+       # ]
+    #)
+    return
